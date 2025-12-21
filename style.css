@@ -1,0 +1,205 @@
+        .title{
+            color: #e50914;
+            text-align: center;
+            text-shadow: 0 2px 50px rgba(240, 18, 18, 0.868);
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 0%, #1a0505 100%); /* Gradiente sutil */
+            color: #ffffff; /* Texto branco */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column; /* Alinha os itens verticalmente */
+            margin: 0;
+        }
+        form {
+            background-color: #1f1f1f;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 4px;
+            color: #fff;
+            box-sizing: border-box; /* Garante que o padding não afete a largura total */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input:focus {
+            border-color: #e50914; /* Tom de vermelho */
+            outline: none;
+            box-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e50914; /* Tom de vermelho */
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #f6121d;
+        }
+
+     .toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #f44336;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 17px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+.toast.success {
+    background-color: #4CAF50; /* Verde para sucesso */
+}
+
+/* Estilos para o modal na página final */
+.gift-box {
+    font-size: 100px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gift-box:hover {
+    transform: scale(1.2);
+}
+
+/* O Modal (background) */
+.modal {
+    display: none; /* Escondido por padrão, JS muda para 'flex' */
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Conteúdo do Modal */
+.modal-content {
+    background-color: #1f1f1f;
+    padding: 25px 35px;
+    border: 1px solid #555;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(229, 9, 20, 0.3);
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.4s ease-out;
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+/* O botão de fechar (x) */
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #e50914;
+}
+
+.modal-content .heart {
+    color: #e50914;
+    font-size: 30px;
+    margin-top: 15px;
+    animation: beat 1.3s infinite ease-in-out;
+}
+
+@keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Estilos para o segundo modal (Galeria) */
+.gallery-modal-overlay {
+    z-index: 210; /* Garante que fique acima do primeiro modal */
+    background-color: rgba(0,0,0,0.85);
+}
+
+.gallery-content {
+    max-width: 500px; /* Um pouco mais largo para as fotos */
+}
+
+/* Container do slider */
+.gallery-slider {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Altura fixa para o slider */
+    margin-top: 20px;
+    overflow: hidden; /* Essencial para o efeito de slider */
+    border-radius: 8px;
+}
+
+/* Faixa que contém todas as fotos */
+.gallery-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out; /* Animação do slide */
+}
+
+.photo-box {
+    height: 100%;
+    width: 100%;
+    flex-shrink: 0; /* Impede que as imagens encolham */
+    background-color: #333; /* Cor de fundo enquanto a imagem carrega */
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir o espaço sem distorcer */
+    display: block;
+}
+
+/* Responsividade para telas menores (celulares) */
+@media (max-width: 600px) {
+    .gallery-content {
+        max-width: 90vw; /* Ajusta a largura do modal da galeria */
+    }
+    .gift-box {
+        font-size: 80px; /* Reduz um pouco o tamanho do presente */
+    }
+}

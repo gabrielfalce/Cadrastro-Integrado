@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma Surpresa Para Você</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="title">Toque no presente!</h1>
+    <div id="open-modal-btn" class="gift-box">🎁</div>
+
+    <!-- O Modal -->
+    <div id="message-modal" class="modal">
+        <!-- Conteúdo do Modal -->
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <p>Feliz aniversário, Meu Amor! 🎉</p>
+            <p>Maria, eu te adoro. Em muitos pontos nós discordamos, e isso é completamente normal. Podemos brigar, mas eu nunca quero deixar de tentar resolver tudo com você. Independentemente do que aconteça, eu sempre vou querer resolver.
+
+Eu fiz esse site como presente de aniversário porque estou um pouco curto de dinheiro, mas espero que você tenha gostado da surpresa, ele foi simples eu sei.
+
+Eu te amo muito. E eu já ia me esquecendo: FELIZ ANIVERSÁRIO, MEU BEM!!!!! 🎉❤️</p>
+            <button id="open-gallery-btn" style="margin-top: 15px;">Ver Fotos 📸</button>
+            <p class="heart">❤️</p>
+        </div>
+    </div>
+
+    <!-- Modal de Galeria (Segundo Modal) -->
+    <div id="gallery-modal" class="modal gallery-modal-overlay">
+        <div class="modal-content gallery-content">
+            <span class="close-gallery-btn close-btn">&times;</span>
+            <h3>Fotos nossas e suas que eu gosto</h3>
+            <div class="gallery-slider">
+                <div class="gallery-track">
+                    <!-- As imagens agora estão dentro do 'track' -->
+                    <div class="photo-box"><img src="Fotos/foto  (1).jpg" alt="Foto 1"></div>
+                    <div class="photo-box"><img src="Fotos/foto  (2).jpg" alt="Foto 2"></div>
+                    <div class="photo-box"><img src="Fotos/foto  (3).jpg" alt="Foto 3"></div>
+                    <div class="photo-box"><img src="Fotos/foto  (4).jpg" alt="Foto 4"></div>
+                    <div class="photo-box"><img src="Fotos/foto  (5).jpg" alt="Foto 5"></div>
+                    <div class="photo-box"><img src="Fotos/foto  (6).jpg" alt="Foto 6"></div>
+                    <div class="photo-box"><img src="Fotos/foto  (7).jpg" alt="Foto 7"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Pega os elementos do DOM
+        const modal = document.getElementById("message-modal");
+        const btn = document.getElementById("open-modal-btn");
+        const span = document.getElementsByClassName("close-btn")[0];
+
+        // Elementos do segundo modal (Galeria)
+        const galleryModal = document.getElementById("gallery-modal");
+        const galleryBtn = document.getElementById("open-gallery-btn");
+        const gallerySpan = document.getElementsByClassName("close-gallery-btn")[0];
+        
+        // Elementos do Slider
+        const track = document.querySelector('.gallery-track');
+        const slides = Array.from(track.children);
+        let slideInterval;
+        let currentIndex = 0;
+
+        function moveToNextSlide() {
+            currentIndex++;
+            if (currentIndex >= slides.length) {
+                currentIndex = 0; // Volta para o início para criar um loop
+            }
+            const amountToMove = currentIndex * -100;
+            track.style.transform = `translateX(${amountToMove}%)`;
+        }
+
+        function startSlideshow() {
+            galleryModal.style.display = "flex";
+            slideInterval = setInterval(moveToNextSlide, 2000); // Passa a foto a cada 1.5 segundos
+        }
+
+        function stopSlideshow() {
+            galleryModal.style.display = "none";
+            clearInterval(slideInterval);
+            // Reseta a posição do slide quando fechar
+            currentIndex = 0;
+            track.style.transform = 'translateX(0%)';
+        }
+
+        // Quando o usuário clica no presente, abre o modal
+        btn.onclick = function() {
+            modal.style.display = "flex";
+        }
+
+        // Abre o modal de galeria e inicia o slideshow
+        galleryBtn.onclick = startSlideshow;
+
+        // Quando o usuário clica no <span> (x), fecha o modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Fecha o modal de galeria e para o slideshow
+        gallerySpan.onclick = stopSlideshow;
+
+        // Quando o usuário clica fora do conteúdo do modal, também fecha o modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            if (event.target == galleryModal) {
+                stopSlideshow();
+            }
+        }
+    </script>
+</body>
+</html>
