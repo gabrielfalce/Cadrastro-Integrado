@@ -16,6 +16,13 @@
         <!-- Conteúdo do Modal -->
         <div class="modal-content">
             <span class="close-btn">&times;</span>
+  <!-- contador de tempo         -->
+<div class="Timer" >
+<div> tempo desde 17-05-2024</div>
+<span id="contador" >carregando...</span>
+    
+</div>
+
             <p>Feliz aniversário, Meu Amor! 🎉</p>
             <p>Maria, eu te adoro. Em muitos pontos nós discordamos, e isso é completamente normal. Podemos brigar, mas eu nunca quero deixar de tentar resolver tudo com você. Independentemente do que aconteça, eu sempre vou querer resolver.
 
@@ -111,6 +118,30 @@ Eu te amo muito. E eu já ia me esquecendo: FELIZ ANIVERSÁRIO, MEU BEM!!!!! �
                 stopSlideshow();
             }
         }
+
+// Timer de data
+
+
+const dataInicial =  new Date("2024-05-17T00:00:00");
+
+
+function atualizarContador() {
+    const agora  = new Date();
+    const diferenca = agora - dataInicial;
+
+    const segundos = Math.floor(diferenca / 1000 ) % 60 ;
+    const minutos = Math.floor(diferenca / (1000 * 60)) % 60;
+    const horas = Math.floor(diferenca / (1000 * 60 * 60)) % 24;
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+
+    document.getElementById("contador").textContent = 
+     `${dias} dias, ${horas}h, e ${minutos}m ${segundos}s`;
+}
+
+
+setInterval( atualizarContador, 1000);
+atualizarContador();
+
     </script>
 </body>
 </html>

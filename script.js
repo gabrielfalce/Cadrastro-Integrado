@@ -43,7 +43,7 @@ form.addEventListener('submit', function(event) {
     if (dataNascimentoInput.value === "2008-01-30") {
         if(isValid) showToast("Data especial encontrada! :)", true);
     }
-    if (dataNascimentoInput.value === "2008-01-31") {
+    else (dataNascimentoInput.value === "2008-01-31") {
         if(isValid) showToast("Data especial encontrada! :)", true);
     }
 
@@ -53,3 +53,6 @@ form.addEventListener('submit', function(event) {
         }, 5000);
     }
 });
+
+
+
