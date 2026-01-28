@@ -43,15 +43,20 @@ form.addEventListener('submit', function(event) {
     if (dataNascimentoInput.value === "2008-01-30") {
         if(isValid) showToast("Data especial encontrada! :)", true);
     }
-    else (dataNascimentoInput.value === "2008-01-31") {
-        if(isValid) showToast("Data especial encontrada! :)", true);
-    }
+  
 
     if (isValid) {
         setTimeout(function() {
             window.location.href = "paginaFinal.html";
         }, 5000);
     }
+
+
+// segunda validação
+
+
+
+
 });
 
 
