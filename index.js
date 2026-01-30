@@ -40,7 +40,7 @@ form.addEventListener('submit', function(event) {
 
     // segunda validação
     // O valor do input date vem como AAAA-MM-DD
-    if (dataNascimentoInput.value === "2008-01-30") {
+    if (dataNascimentoInput.value === "2007-01-30") {
         if(isValid) showToast("Data especial encontrada! :)", true);
     }
   
